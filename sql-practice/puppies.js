@@ -42,11 +42,52 @@ let db = new sqlite3.Database('./puppies.db', sqlite3.OPEN_READWRITE, (err) => {
 // })
 
 //query the table
+// sql = `SELECT * FROM puppies`;
+// db.all(sql, [], (err, rows) => {
+//   if (err) return console.error(err.message);
+//   rows.forEach(row => console.log(row));
+// })
+
+// //specific query
+// sql = `SELECT name, age_yrs, weight_lbs FROM puppies`;
+// db.all(sql, [], (err, rows) => {
+//   if (err) return console.error(err.message);
+//   rows.forEach(row => console.log(row));
+// })
+
+//another specific query
+// sql = `SELECT * FROM puppies WHERE name='Max'`;
+// db.all(sql, [], (err, rows) => {
+//   if (err) return console.error(err.message);
+//   rows.forEach(row => console.log(row));
+// })
+
+// sql = `SELECT * FROM puppies WHERE weight_lbs >= 25`;
+// db.all(sql, [], (err, rows) => {
+//   if (err) return console.error(err.message);
+//   rows.forEach(row => console.log(row));
+// })
+
+// sql = `SELECT * FROM puppies WHERE weight_lbs >= 25 AND microchipped`;
+// db.all(sql, [], (err, rows) => {
+//   if (err) return console.error(err.message);
+//   rows.forEach(row => console.log(row));
+// })
+
+//delete puppy #9
+// sql = `DELETE FROM puppies WHERE id=9`;
+// db.run(sql, (err) => {
+//   if (err) return console.error(err.message);
+// });
+
+//delete puppies without chips
+sql = `DELETE FROM puppies WHERE microchipped=FALSE`;
+db.run(sql, (err) => {
+  if (err) return console.error(err.message);
+});
+
 sql = `SELECT * FROM puppies`;
 db.all(sql, [], (err, rows) => {
   if (err) return console.error(err.message);
   rows.forEach(row => console.log(row));
 })
-
-//specific query
-sql =
